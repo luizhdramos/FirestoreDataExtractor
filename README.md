@@ -51,10 +51,11 @@ Therefore, this function creates a connection to the Firebase Firestore using th
 
 This is a Python function that extracts data from a collection in Firestore, a Google NoSQL database, and transforms it into a Pandas DataFrame. The function has three input arguments, which are:
 
-collection_name: name of the collection to extract data from.
-app: instance of the Firebase app created with valid authentication to access Firestore.
-batch_size (optional, default = 4000): number of documents to be returned per iteration.
-cursor (optional, default = null): starting point for the next iteration of documents to be returned.
+1. collection_name: name of the collection to extract data from.
+2. app: instance of the Firebase app created with valid authentication to access Firestore.
+3. batch_size (optional, default = 4000): number of documents to be returned per iteration.
+4. cursor (optional, default = null): starting point for the next iteration of documents to be returned.
+
 The function starts by importing the necessary libraries, such as Pandas, firebase_admin, and json. Next, a connection to Firestore is created using the firebase_admin library. Then, an auxiliary function "iterate" is defined to iterate over the collection and return documents in a specified size. The iterate function uses an additional argument "cursor," which allows starting the iteration from a specific point.
 
 Next, the main function FirestoreExtractor creates a list of dictionaries, where each dictionary represents a document from the collection and contains all fields and their values. Then, this list is converted into a Pandas DataFrame, and the "id" column is set as the index of the DataFrame. Finally, the DataFrame is returned as the result of the function.
